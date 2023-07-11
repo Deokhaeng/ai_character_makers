@@ -1,12 +1,20 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import rogoIcon from "../public/icon-rogo.svg";
+
 export default function Home() {
-  const titleTextStyle = "text-title font-semibold";
-  const infoTextStyle = "text-base text-gray-midium";
+  const router = useRouter();
+
+  const titleTextStyle = "text-title font-semibold text-01";
+  const infoTextStyle = "text-base text-02";
 
   return (
-    <div className="flex items-center h-screen">
+    <div className="grid items-center justify-items-center h-screen bg-white">
       <div className="grid justify-items-center px-6">
-        <div className="w-20 h-20 rounded-full bg-gradient-to-r from-primary from-0% rotate-90 mb-8" />
-        <p className={titleTextStyle}>AI와의 대화를 통해</p>
+        <Image priority src={rogoIcon} alt="rogo" />
+        <p className={`${titleTextStyle} mt-6`}>AI와의 대화를 통해</p>
         <p className={titleTextStyle}>나만의 캐릭터를 만들어 보세요.</p>
         <p className={`${infoTextStyle} mt-6`}>AI 기술을 중심으로 한 캐릭터 생성을 소개합니다.</p>
         <p className={infoTextStyle}>Chat Gpt와 Kalro AI와 같은 AI를 이용하여</p>
@@ -17,7 +25,8 @@ export default function Home() {
         <p className="text-base">지금 AI와의 대화를 통해 나만의 캐릭터를 만들어 보세요!</p>
         <button
           type="button"
-          className="rounded bg-primary mt-8 w-full py-3 text-white hover:bg-opacity-70"
+          onClick={() => router.push("./nickname")}
+          className="rounded bg-primary mt-8 w-full py-3 text-white hover:bg-primary-hover"
         >
           시작하기
         </button>
